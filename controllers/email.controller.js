@@ -67,6 +67,10 @@ export const contactEmail = (req, res) => {
     message == ""
   ) {
     return res.status(400).send("Please fill up all the input fields.");
+  } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    return res.status(400).send("Invalid Email.");
+  } else if (isNaN(Number(mobileNumber))) {
+    return res.status(400).send("Mobile Number must be numeric only.");
   } else {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
