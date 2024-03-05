@@ -2,11 +2,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import nodemailer from "nodemailer";
 const RATE_LIMIT_INTERVAL = 60 * 60 * 1000;
-const RATE_LIMIT_COUNT = 2;
+const RATE_LIMIT_COUNT = 3;
 const ipCountMap = new Map();
 
 export const contactEmail = (req, res) => {
-  console.log(req.body);
+  const { firstName, lastName, subject, email, mobileNumber, message } =
+    req.body;
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
   const now = Date.now();
   const ipCount = ipCountMap.get(ip) || { count: 0, timestamp: now };
@@ -57,13 +58,24 @@ export const contactEmail = (req, res) => {
     subject: `Message from: ${req.body.email}: ${req.body.subject}`,
     html: messageHtml,
   };
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-      res.send("error");
-    } else {
-      console.log("Email sent: " + info.response);
-      res.send("success");
-    }
-  });
+  if (
+    firstName == "" ||
+    lastName == "" ||
+    subject == "" ||
+    email == "" ||
+    mobileNumber == "" ||
+    message == ""
+  ) {
+    return res.status(400).send("Please fill up all the input fields.");
+  } else {
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        res.send("Something went wrong");
+      } else {
+        console.log("Email sent: " + info.response);
+        res.send("Email sent successfully");
+      }
+    });
+  }
 };
