@@ -9,11 +9,12 @@ import userRoutes from "./routes/user.route.js";
 import contactRoutes from "./routes/email.route.js";
 const app = express();
 
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(bodyParser.json({ limit: "50mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
-    origin: "*",
+    // origin: "*",
+    origin: "http://localhost:3000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,
