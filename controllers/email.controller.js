@@ -38,7 +38,8 @@ export const contactEmail = (req, res) => {
   let messageHtml = `<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <div style="background-color: #151516; color: #f9f9f9;"><center><br><br>
+    <div style="background-color: #151516; color: #f9f9f9;">
+    <center><br><br>
 
       <a href="mabsrencode.com"><img width="150px" src="https://mabsrencode.com/images/logo-light.png" alt="logo"></a><br>
       <p style="font-family: 'Teko', sans-serif; color: #f9f9f9; font-weight: 700;">Front-End Developer</p><br><br>
