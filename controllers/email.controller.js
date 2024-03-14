@@ -1,11 +1,10 @@
-import dotenv from "dotenv";
-dotenv.config();
-import nodemailer from "nodemailer";
+require("dotenv").config();
+const nodemailer = require("nodemailer");
 const RATE_LIMIT_INTERVAL = 60 * 60 * 1000;
 const RATE_LIMIT_COUNT = 3;
 const ipCountMap = new Map();
 
-export const contactEmail = (req, res) => {
+const contactEmail = (req, res) => {
   const { firstName, lastName, subject, email, mobileNumber, message } =
     req.body;
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
@@ -79,8 +78,36 @@ export const contactEmail = (req, res) => {
         res.send("Something went wrong");
       } else {
         console.log("Email sent: " + info.response);
-        res.send("Email sent successfully");
+        res.status(200).send("Email sent successfully.");
       }
     });
   }
+
+  const autoResponseMessage = `<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <div style="background-color: #151516; color: #f9f9f9;"><center><br><br>
+      <a href="mabsrencode.com"><img width="150px" src="https://mabsrencode.com/images/logo-light.png"></a><br>
+      <br><br>
+      <h3 style="font-family: 'Teko', sans-serif; color: #f9f9f9; font-weight: 400;"><strong>Your email has been received!</strong></h3><br><br>
+    </center></div><br><br>
+    Thank you for contacting us. We will get back to you soon.`;
+
+  const autoresponseMailOptions = {
+    from: `Mabsrencode <${process.env.ADMIN_USER}>`,
+    to: req.body.email,
+    subject: `Thank you for your email ${req.body.firstName} ${req.body.lastName}.`,
+    html: autoResponseMessage,
+  };
+
+  transporter.sendMail(autoresponseMailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send("Error sending autoresponse email");
+    } else {
+      console.log("Autoresponse email sent: " + info.response);
+      res.status(200).send("Email sent successfully.");
+    }
+  });
 };
+module.exports = contactEmail;

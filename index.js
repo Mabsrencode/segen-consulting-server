@@ -1,12 +1,11 @@
-import dotenv from "dotenv";
-dotenv.config();
-import express from "express";
-import bodyParser from "body-parser";
-import path from "path";
-import mongoose from "mongoose";
-import cors from "cors";
-import userRoutes from "./routes/user.route.js";
-import contactRoutes from "./routes/email.route.js";
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const userRoutes = require("./routes/user.route.js");
+const contactRoutes = require("./routes/email.route.js");
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -14,17 +13,17 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(
   cors({
     // origin: "*",
-    origin: "http://localhost:3000",
+    origin: "http://localhost:4000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,
   })
 );
 
-// app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "../client/build")));
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 // });
 
 const dbUrl = process.env.DB_URL;

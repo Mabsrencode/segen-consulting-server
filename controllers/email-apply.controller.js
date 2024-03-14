@@ -1,11 +1,10 @@
-import dotenv from "dotenv";
-dotenv.config();
-import nodemailer from "nodemailer";
+require("dotenv").config();
+const nodemailer = require("nodemailer");
 const RATE_LIMIT_INTERVAL = 60 * 60 * 1000;
 const RATE_LIMIT_COUNT = 3;
 const ipCountMap = new Map();
 
-export const applyEmail = (req, res) => {
+const applyEmail = (req, res) => {
   const { firstName, lastName, subject, email, mobileNumber, message, file } =
     req.body;
 
@@ -92,3 +91,4 @@ export const applyEmail = (req, res) => {
     });
   }
 };
+module.exports = applyEmail;

@@ -1,11 +1,10 @@
-import dotenv from "dotenv";
-dotenv.config();
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+require("dotenv").config();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-import User from "../models/user.js";
+const User = require("../models/user.js");
 const secretToken = process.env.REACT_APP_SECRET_TOKEN;
-export const signin = async (req, res) => {
+const signin = async (req, res) => {
   const { email, password } = req.body;
   try {
     const existingUser = await User.findOne({ email });
@@ -27,7 +26,7 @@ export const signin = async (req, res) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
-export const signup = async (req, res) => {
+const signup = async (req, res) => {
   const { email, password, cpassword, firstName, lastName } = req.body;
   try {
     const existingUser = await User.findOne({ email });
@@ -51,3 +50,5 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
+
+module.exports = { signin, signup };
