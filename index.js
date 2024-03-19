@@ -7,7 +7,6 @@ const connectDB = require("./db.js");
 const userRoutes = require("./routes/user.route.js");
 const contactRoutes = require("./routes/email.route.js");
 const authRoutes = require("./routes/auth.route.js");
-const { authenticate } = require("./middleware/auth.middleware.js");
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -36,9 +35,13 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/auth", authRoutes);
-app.use("/user", userRoutes);
 app.use("/contact", contactRoutes);
-app.listen(
-  PORT,
-  () => console.log(`Starting server on port ${PORT}`) || connectDB()
-);
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Starting server on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Error connecting to database:", error);
+  });
