@@ -22,29 +22,30 @@ const login = async (req, res, next) => {
 
   try {
     const user = await User.findOne({ username });
+    const passwordMatch = await bcrypt.compare(password, user.password);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
-    }
-
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    if (!passwordMatch) {
+    } else if (!passwordMatch) {
       return res.status(401).json({ message: "Incorrect password" });
     }
-
-    // Create JWT token with expiration time
+    const userData = {
+      username: user.username,
+      email: user.email,
+      role: user.role,
+      _id: user._id,
+    };
     const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-      expiresIn: "1h", // Token expires in 1 hour
+      expiresIn: "1h",
     });
 
-    // Set the token as an HTTP-only cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true, // Enable for HTTPS
-      sameSite: "strict", // Prevent CSRF attacks
-      maxAge: 3600000, // 1 hour expiration (in milliseconds)
+      secure: true,
+      sameSite: "strict",
+      maxAge: 3600000,
     });
 
-    res.json({ message: "Login successful" }, token);
+    res.status(201).json({ message: "Login successful", token, userData });
   } catch (error) {
     next(error);
   }
