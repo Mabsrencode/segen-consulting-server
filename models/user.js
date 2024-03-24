@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -18,12 +18,15 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["user", "admin", "super_admin"],
-      default: "user",
+      enum: ["admin", "super_admin"],
+      default: "admin",
     },
   },
   { timestamps: true }
 );
+userSchema.pre("save", async function () {
+  this.password = await bcrypt.hash(this.password, 12);
+});
 
 const User = mongoose.model("User", userSchema);
 
