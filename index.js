@@ -8,7 +8,7 @@ const connectDB = require("./db.js");
 const userRoutes = require("./routes/user.route.js");
 const contactRoutes = require("./routes/email.route.js");
 const authRoutes = require("./routes/auth.route.js");
-
+const jobOffers = require("./routes/offers.route");
 const app = express();
 
 app.use(
@@ -38,6 +38,7 @@ app.use((req, res, next) => {
 });
 app.use("/auth", authRoutes);
 app.use("/contact", contactRoutes);
+app.use("/job", jobOffers);
 connectDB()
   .then(() => {
     app.listen(PORT, () => {

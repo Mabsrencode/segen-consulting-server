@@ -3,12 +3,17 @@ const mongoose = require("mongoose");
 const offersSchema = mongoose.Schema({
   title: {
     type: String,
-    require: true,
+    required: true,
   },
   requirements: {
-    type: Array,
-    require: true,
+    type: [String],
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
   },
 });
+
 const Offers = mongoose.model("Offers", offersSchema);
 module.exports = Offers;
