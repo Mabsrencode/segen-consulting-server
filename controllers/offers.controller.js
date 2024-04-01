@@ -15,7 +15,6 @@ const createJobOffer = async (req, res) => {
   const offer = new Offers({
     title: req.body.title,
     requirements: req.body.requirements,
-    description: req.body.description,
   });
 
   try {

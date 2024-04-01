@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const cors = require("cors");
 const connectDB = require("./db.js");
-const userRoutes = require("./routes/user.route.js");
+const adminRoutes = require("./routes/user.route.js");
 const contactRoutes = require("./routes/email.route.js");
 const authRoutes = require("./routes/auth.route.js");
 const jobOffers = require("./routes/offers.route");
@@ -39,6 +39,7 @@ app.use((req, res, next) => {
 app.use("/auth", authRoutes);
 app.use("/contact", contactRoutes);
 app.use("/job", jobOffers);
+app.use("/admin", adminRoutes);
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
