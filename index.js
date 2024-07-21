@@ -45,7 +45,7 @@ const PORT = process.env.PORT || 4000;
 
 const pingServer = () => {
   http
-    .get("localhost", (res) => {
+    .get("https://segen-consulting.onrender.com", (res) => {
       console.log("Pinged server, status code:", res.statusCode);
     })
     .on("error", (err) => {
