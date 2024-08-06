@@ -28,18 +28,7 @@ const app = express();
 // );
 app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "cdnjs.cloudflare.com"],
-        styleSrc: ["'self'", "cdnjs.cloudflare.com"],
-        imgSrc: ["'self'", "data:"],
-        connectSrc: ["'self'"],
-        fontSrc: ["'self'", "cdnjs.cloudflare.com"],
-        objectSrc: ["'none'"],
-        upgradeInsecureRequests: [],
-      },
-    },
+    contentSecurityPolicy: true,
     frameguard: { action: "deny" },
     hsts: {
       maxAge: 31536000, // One year in seconds
