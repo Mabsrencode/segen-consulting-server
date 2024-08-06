@@ -31,8 +31,8 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "cdnjs.cloudflare.com"],
-        styleSrc: ["'self'", "'unsafe-inline'", "cdnjs.cloudflare.com"],
+        scriptSrc: ["'self'", "cdnjs.cloudflare.com"],
+        styleSrc: ["'self'", "cdnjs.cloudflare.com"],
         imgSrc: ["'self'", "data:"],
         connectSrc: ["'self'"],
         fontSrc: ["'self'", "cdnjs.cloudflare.com"],
@@ -51,6 +51,10 @@ app.use(
 );
 // app.set("trust proxy", 1);
 app.disable("x-powered-by");
+app.use((req, res, next) => {
+  res.removeHeader("Server");
+  next();
+});
 app.use(
   cors({
     origin: "*",
@@ -79,10 +83,6 @@ app.use("/auth", authRoutes);
 app.use("/contact", contactRoutes);
 app.use("/job", jobOffers);
 app.use("/admin", adminRoutes);
-app.use((req, res, next) => {
-  res.removeHeader("Server");
-  next();
-});
 
 app.use(express.static(path.join(__dirname, "build")));
 
