@@ -54,7 +54,7 @@ app.use(
 );
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // limit each IP to 100 requests per windows
+  max: 200, // limit each IP to 200 requests per windows
 });
 app.use(limiter);
 app.use(cookieParser());
