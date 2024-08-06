@@ -33,7 +33,6 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    console.log(req.body);
 
     if (!username || !password) {
       return res.json({ message: "All fields are required" });
