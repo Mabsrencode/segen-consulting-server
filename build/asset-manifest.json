@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.e09f5a07.css",
-    "main.js": "./static/js/main.47b0caa2.js",
+    "main.css": "./static/css/main.4bd4ce10.css",
+    "main.js": "./static/js/main.0e7ca2aa.js",
     "static/media/usa.png": "./static/media/usa.73a51a85a31514151969.png",
     "static/media/nurse-slogan-nobg.png": "./static/media/nurse-slogan-nobg.8e13143a3506d5cefde7.png",
     "static/media/heroSmallDevice.jpg": "./static/media/heroSmallDevice.0771461ab3cb4228861d.jpg",
@@ -18,11 +18,11 @@
     "static/media/small-device-airplane.png": "./static/media/small-device-airplane.00368c135e028f983aed.png",
     "static/media/nurse1.jpg": "./static/media/nurse1.6975243ef3d8bd92c142.jpg",
     "index.html": "./index.html",
-    "main.e09f5a07.css.map": "./static/css/main.e09f5a07.css.map",
-    "main.47b0caa2.js.map": "./static/js/main.47b0caa2.js.map"
+    "main.4bd4ce10.css.map": "./static/css/main.4bd4ce10.css.map",
+    "main.0e7ca2aa.js.map": "./static/js/main.0e7ca2aa.js.map"
   },
   "entrypoints": [
-    "static/css/main.e09f5a07.css",
-    "static/js/main.47b0caa2.js"
+    "static/css/main.4bd4ce10.css",
+    "static/js/main.0e7ca2aa.js"
   ]
 }
