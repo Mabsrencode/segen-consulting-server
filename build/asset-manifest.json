@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "./static/css/main.91dc1a51.css",
-    "main.js": "./static/js/main.15813ea1.js",
-    "static/media/usa.png": "./static/media/usa.73a51a85a31514151969.png",
-    "static/media/nurse-slogan-nobg.png": "./static/media/nurse-slogan-nobg.8e13143a3506d5cefde7.png",
-    "static/media/heroSmallDevice.jpg": "./static/media/heroSmallDevice.0771461ab3cb4228861d.jpg",
-    "static/media/nurse5.jpg": "./static/media/nurse5.4274696f2316a3dbf8ca.jpg",
-    "static/media/nurse7.jpg": "./static/media/nurse7.7dfb19cff4faa01adcea.jpg",
-    "static/media/nurse2.jpg": "./static/media/nurse2.24841aa17436ce4ebfa9.jpg",
-    "static/media/nurse1.jpg": "./static/media/nurse1.0ad6da7cbda92ba8c70e.jpg",
-    "static/media/nurse3.jpeg": "./static/media/nurse3.2e09c7fcf1ed4a21ab14.jpeg",
-    "static/media/nurse4.jpeg": "./static/media/nurse4.f63c6cb36d21c5051627.jpeg",
-    "static/media/multiple-nurse.jpg": "./static/media/multiple-nurse.78c10e0ad057be2acfa9.jpg",
-    "static/media/segen-logo.png": "./static/media/segen-logo.0e2a45eba74451b78142.png",
-    "static/media/quezon.jpg": "./static/media/quezon.c33f584ead6e5efaf856.jpg",
-    "static/media/typing.webp": "./static/media/typing.51f3d9a9f3e2b74ee4b7.webp",
-    "static/media/airplane.png": "./static/media/airplane.31f0482b45c4be592ad0.png",
-    "static/media/small-device-airplane.png": "./static/media/small-device-airplane.00368c135e028f983aed.png",
-    "index.html": "./index.html",
-    "main.91dc1a51.css.map": "./static/css/main.91dc1a51.css.map",
-    "main.15813ea1.js.map": "./static/js/main.15813ea1.js.map"
+    "main.css": "/static/css/main.e34e747f.css",
+    "main.js": "/static/js/main.d86310ed.js",
+    "static/media/usa.png": "/static/media/usa.73a51a85a31514151969.png",
+    "static/media/nurse-slogan-nobg.png": "/static/media/nurse-slogan-nobg.8e13143a3506d5cefde7.png",
+    "static/media/heroSmallDevice.jpg": "/static/media/heroSmallDevice.0771461ab3cb4228861d.jpg",
+    "static/media/nurse5.jpg": "/static/media/nurse5.4274696f2316a3dbf8ca.jpg",
+    "static/media/nurse7.jpg": "/static/media/nurse7.7dfb19cff4faa01adcea.jpg",
+    "static/media/nurse2.jpg": "/static/media/nurse2.24841aa17436ce4ebfa9.jpg",
+    "static/media/nurse1.jpg": "/static/media/nurse1.0ad6da7cbda92ba8c70e.jpg",
+    "static/media/nurse3.jpeg": "/static/media/nurse3.2e09c7fcf1ed4a21ab14.jpeg",
+    "static/media/nurse4.jpeg": "/static/media/nurse4.f63c6cb36d21c5051627.jpeg",
+    "static/media/multiple-nurse.jpg": "/static/media/multiple-nurse.78c10e0ad057be2acfa9.jpg",
+    "static/media/segen-logo.png": "/static/media/segen-logo.0e2a45eba74451b78142.png",
+    "static/media/quezon.jpg": "/static/media/quezon.c33f584ead6e5efaf856.jpg",
+    "static/media/typing.webp": "/static/media/typing.51f3d9a9f3e2b74ee4b7.webp",
+    "static/media/airplane.png": "/static/media/airplane.31f0482b45c4be592ad0.png",
+    "static/media/small-device-airplane.png": "/static/media/small-device-airplane.00368c135e028f983aed.png",
+    "index.html": "/index.html",
+    "main.e34e747f.css.map": "/static/css/main.e34e747f.css.map",
+    "main.d86310ed.js.map": "/static/js/main.d86310ed.js.map"
   },
   "entrypoints": [
-    "static/css/main.91dc1a51.css",
-    "static/js/main.15813ea1.js"
+    "static/css/main.e34e747f.css",
+    "static/js/main.d86310ed.js"
   ]
 }

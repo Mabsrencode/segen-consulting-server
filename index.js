@@ -15,20 +15,16 @@ const authRoutes = require("./routes/auth.route.js");
 const jobOffers = require("./routes/offers.route");
 const app = express();
 
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: true,
-//     frameguard: { action: "deny" },
-//     hsts: {
-//       maxAge: 31536000, // One year in seconds
-//       includeSubDomains: true, // Apply to all subdomains
-//       preload: true,
-//     },
-//   })
-// );
 app.use(
   helmet({
-    contentSecurityPolicy: true,
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        frameSrc: ["'self'", "data:"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        frameAncestors: ["'self'"],
+      },
+    },
     frameguard: { action: "deny" },
     hsts: {
       maxAge: 31536000, // One year in seconds
@@ -54,7 +50,7 @@ app.use(
 );
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200, // limit each IP to 200 requests per windows
+  max: 1000, // limit each IP to 200 requests per windows
 });
 app.use(limiter);
 app.use(cookieParser());
