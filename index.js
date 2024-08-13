@@ -15,6 +15,13 @@ const authRoutes = require("./routes/auth.route.js");
 const jobOffers = require("./routes/offers.route");
 const app = express();
 
+// app.use((req, res, next) => {
+//   if (req.headers.host.slice(0, 4) !== "www.") {
+//     res.redirect(301, "https://www." + req.headers.host + req.url);
+//   } else {
+//     next();
+//   }
+// });
 app.use(
   helmet({
     contentSecurityPolicy: {
