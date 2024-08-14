@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs"); // Updated import
 const User = require("../models/user.js");
 const { createSecretToken } = require("../utils/createSecretToken.js");
 

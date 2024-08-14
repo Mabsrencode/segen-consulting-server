@@ -41,7 +41,7 @@ app.use(
     referrerPolicy: { policy: "no-referrer" },
   })
 );
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   res.removeHeader("Server");
@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: "*",
+    origin: "https://segenhealthsolutions.com",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -82,12 +82,11 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-const dbUrl = process.env.DB_URL;
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 const pingServer = () => {
   http
-    .get("https://segen-consulting.onrender.com", (res) => {
+    .get("https://segenhealthsolutions.com/", (res) => {
       console.log("Pinged server, status code:", res.statusCode);
     })
     .on("error", (err) => {
@@ -96,7 +95,7 @@ const pingServer = () => {
 };
 connectDB()
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(4000, () => {
       console.log(`Starting server on port ${PORT}`);
     });
     cron.schedule("*/5 * * * *", pingServer);
