@@ -41,7 +41,7 @@ app.use(
     referrerPolicy: { policy: "no-referrer" },
   })
 );
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   res.removeHeader("Server");
@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: "https://segenhealthsolutions.com",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,

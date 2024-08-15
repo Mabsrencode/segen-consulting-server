@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e34e747f.css",
-    "main.js": "/static/js/main.8c51b1ba.js",
+    "main.js": "/static/js/main.222920f1.js",
     "static/media/usa.png": "/static/media/usa.73a51a85a31514151969.png",
     "static/media/nurse-slogan-nobg.png": "/static/media/nurse-slogan-nobg.8e13143a3506d5cefde7.png",
     "static/media/heroSmallDevice.jpg": "/static/media/heroSmallDevice.0771461ab3cb4228861d.jpg",
@@ -19,10 +19,10 @@
     "static/media/small-device-airplane.png": "/static/media/small-device-airplane.00368c135e028f983aed.png",
     "index.html": "/index.html",
     "main.e34e747f.css.map": "/static/css/main.e34e747f.css.map",
-    "main.8c51b1ba.js.map": "/static/js/main.8c51b1ba.js.map"
+    "main.222920f1.js.map": "/static/js/main.222920f1.js.map"
   },
   "entrypoints": [
     "static/css/main.e34e747f.css",
-    "static/js/main.8c51b1ba.js"
+    "static/js/main.222920f1.js"
   ]
 }

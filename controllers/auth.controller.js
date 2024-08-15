@@ -16,7 +16,7 @@ const register = async (req, res, next) => {
       password,
     });
     const token = createSecretToken(user._id.toString());
-    res.cookie("token", token, {
+    res.cookie("segen-tk", token, {
       withCredentials: true,
       httpOnly: false,
       secure: true,
@@ -58,7 +58,7 @@ const login = async (req, res, next) => {
     };
 
     const token = createSecretToken(user._id);
-    res.cookie("token", token, {
+    res.cookie("segen-tk", token, {
       withCredentials: true,
       httpOnly: false,
       secure: true,
@@ -72,4 +72,19 @@ const login = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login };
+const logout = (req, res) => {
+  try {
+    res.clearCookie("segen-tk", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      path: "/",
+    });
+    res.status(200).send({ message: "Logout successful" });
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).send({ message: "Logout failed" });
+  }
+};
+
+module.exports = { register, login, logout };
