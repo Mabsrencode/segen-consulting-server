@@ -1,7 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const cron = require("node-cron");
-const http = require("http");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require("path");
@@ -15,13 +13,6 @@ const authRoutes = require("./routes/auth.route.js");
 const jobOffers = require("./routes/offers.route");
 const app = express();
 
-// app.use((req, res, next) => {
-//   if (req.headers.host.slice(0, 4) !== "www.") {
-//     res.redirect(301, "https://www." + req.headers.host + req.url);
-//   } else {
-//     next();
-//   }
-// });
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -41,7 +32,7 @@ app.use(
     referrerPolicy: { policy: "no-referrer" },
   })
 );
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   res.removeHeader("Server");
@@ -49,27 +40,20 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: "*",
+    origin: "https://segenhealthsolutions.com/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 1000, // limit each IP to 200 requests per windows
+  windowMs: 15 * 60 * 1000,
+  max: 1000,
 });
 app.use(limiter);
 app.use(cookieParser());
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
-// app.use((req, res, next) => {
-//   if (req.protocol === "http") {
-//     return res.redirect(`https://${req.headers.host}${req.url}`);
-//   }
-//   next();
-// });
 
 app.use("/auth", authRoutes);
 app.use("/contact", contactRoutes);
@@ -82,23 +66,11 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-const PORT = process.env.PORT || 3000;
-
-const pingServer = () => {
-  http
-    .get("https://segenhealthsolutions.com/", (res) => {
-      console.log("Pinged server, status code:", res.statusCode);
-    })
-    .on("error", (err) => {
-      console.error("Error pinging server:", err.message);
-    });
-};
 connectDB()
   .then(() => {
-    app.listen(4000, () => {
-      console.log(`Starting server on port ${PORT}`);
+    app.listen(() => {
+      console.log("Server is now live.");
     });
-    cron.schedule("*/5 * * * *", pingServer);
   })
   .catch((error) => {
     console.error("Error connecting to database:", error);
