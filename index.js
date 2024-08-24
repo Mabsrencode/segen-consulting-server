@@ -68,7 +68,7 @@ app.get("/*", (req, res) => {
 
 connectDB()
   .then(() => {
-    app.listen(() => {
+    app.listen(4000, () => {
       console.log("Server is now live.");
     });
   })
